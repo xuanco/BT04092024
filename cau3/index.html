@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Filter Greater Than</title>
+    <script>
+        const filterGreaterThan = (arr, value) => {
+            const result = [];
+            for (let i = 0; i < arr.length; i++) {
+                if (arr[i] > value) {
+                    result.push(arr[i]);
+                }
+            }
+            return result;
+        };
+
+        function filterArray() {
+            const inputArray = document.getElementById('inputArray').value;
+            const inputValue = parseInt(document.getElementById('inputValue').value);
+
+            // Chuyển chuỗi inputArray thành mảng số nguyên
+            const array = inputArray.split(',').map(Number);
+
+            const filteredArray = filterGreaterThan(array, inputValue);
+            document.getElementById('result').innerText = 'Mảng sau khi lọc: ' + filteredArray.join(', ');
+        }
+    </script>
+</head>
+<body>
+    <h1>Filter Greater Than</h1>
+
+    <label for="inputArray">Nhập mảng số (cách nhau bằng dấu phẩy):</label>
+    <input type="text" id="inputArray" placeholder="1, 2, 3, 4, 5">
+
+    <br><br>
+
+    <label for="inputValue">Nhập giá trị lọc:</label>
+    <input type="number" id="inputValue" placeholder="5">
+
+    <br><br>
+
+    <button onclick="filterArray()">Lọc</button>
+
+    <p id="result"></p>
+</body>
+</html>
